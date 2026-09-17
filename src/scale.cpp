@@ -261,8 +261,12 @@ bool deepSearchScale() {
   // without pull-up resistor (10k) on LOADCELL_DOUT_PIN the hx711 lib functions
   // are not reliable in detecting a missing chip
   // these tests work even without pull-up resistor
-  const uint32_t timeout = 1000;
-  const int samples = 10;
+  #if CONFIG_IDF_TARGET_ESP32S3
+  const uint32_t timeout = 5000; // 5 seconds timeout for waiting for the chip to respond (Recogignition Problems with ESP32-S3)
+  #else
+  const uint32_t timeout = 1000; // 1 second timeout for waiting for the chip to respond
+  #endif
+   const int samples = 10;
 
   pinMode(LOADCELL_DOUT_PIN, INPUT);
   pinMode(LOADCELL_SCK_PIN, OUTPUT);
