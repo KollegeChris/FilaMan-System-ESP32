@@ -32,11 +32,7 @@ void wifiSettings() {
     // Maximale Sendeleistung. 17dBm war ein Kompromiss gegen Hitzeprobleme,
     // führte bei marginalem Empfang aber zu AP-seitigen Auth-/Assoc-Kicks
     // (reason=2/4/9/202). Bei Verdacht auf Überhitzung wieder auf 17dBm zurück. ESP32-S3 hat Proleme mit 19,5dBm, daher hier 8,5dBm.
-    #if CONFIG_IDF_TARGET_ESP32S3
-    WiFi.setTxPower(WIFI_POWER_8_5dBm);
-    #else
     WiFi.setTxPower(WIFI_POWER_19_5dBm);
-    #endif
 
     // Hinweis: Kein esp_wifi_set_rssi_threshold() mehr.
     // Der vorherige Wert (-80 dBm) löste in Single-AP-Heimnetzen häufige

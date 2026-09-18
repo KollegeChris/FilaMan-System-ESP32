@@ -262,7 +262,7 @@ bool deepSearchScale() {
   // are not reliable in detecting a missing chip
   // these tests work even without pull-up resistor
   const uint32_t timeout = 1000; // 1 second timeout for waiting for the chip to respond
-   const int samples = 10;
+  const int samples = 10;
 
   pinMode(LOADCELL_DOUT_PIN, INPUT);
   pinMode(LOADCELL_SCK_PIN, OUTPUT);
